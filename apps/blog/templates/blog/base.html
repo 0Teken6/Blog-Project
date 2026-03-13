@@ -11,13 +11,21 @@
     <link rel="stylesheet" href="{% static 'blog/main.css' %}">
 </head>
 <body>
+    <header class="site-header">
+        {% include "blog/navbar.html" %}
+    </header>
 
-    {% include "blog/navbar.html" %}
+    <main role="main" class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
 
-    <div class="container">
         {% block content %}
         {% endblock %}
-    </div>
-
+    </main>
 </body>
 </html>

@@ -10,15 +10,22 @@
           <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Posts</a>
         </li>
         {% if not user.is_authenticated %}
-            <li class="nav-item" id="login-nav-item">
-                <a class="nav-link" href="#">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link border border-light rounded px-2" id="register-nav-item" href="#">Register</a>
-            </li>
+          <li class="nav-item" id="login-nav-item">
+              <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link border border-light rounded px-2" id="register-nav-item" href="#">Register</a>
+          </li>
+        {% else %}
+          <li class="nav-item" id="login-nav-item">
+              <a class="nav-link" href="#">Logout</a>
+          </li>
         {% endif %}
       </ul>
     </div>
