@@ -1,0 +1,9 @@
+#nav-blog {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#register-nav-item:hover{
+    background-color: aliceblue;
+    color: #000;
+}
