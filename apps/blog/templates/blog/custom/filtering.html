@@ -1,0 +1,44 @@
+<div class="col-md-3">
+    <div class="content-section sidebar">
+        <h5>Filter Posts</h5>
+        <form method="get">
+            <div class="mb-3">
+                <strong>Categories</strong>
+                {% for category in categories %}
+                <div class="form-check">
+                    <input class="form-check-input"
+                        type="checkbox"
+                        name="category"
+                        value="{{ category.id }}"
+                        id="cat{{ category.id }}">
+                    <label class="form-check-label" for="cat{{ category.id }}">
+                        {{ category.name }} ({{ category.post_count }})
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                <strong>Tags</strong>
+                {% for tag in tags %}
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="tags"
+                        value="{{ tag.id }}"
+                        id="tag{{ tag.id }}">
+                    <label class="form-check-label" for="tag{{ tag.id }}">
+                        {{ tag.name }} ({{ tag.post_count }})
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="btn btn-sm btn-primary mt-2" type="submit">
+                Apply Filter
+            </button>
+            <a href="{% url 'posts' %}" class="btn btn-sm btn-secondary mt-2">
+                Reset
+            </a>
+        </form>
+    </div>
+</div>

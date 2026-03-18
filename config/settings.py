@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +42,14 @@ INSTALLED_APPS = [
     'apps.blog.apps.BlogConfig',
     'apps.users.apps.UsersConfig',
     'bootstrap5',
+    'crispy_forms',
+    "crispy_bootstrap5",
+    'django_filters',
+    "allauth_ui",
+    "allauth",
+    "allauth.account",
+    "widget_tweaks",
+    "slippers", 
 ]
 
 MIDDLEWARE = [
@@ -51,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -58,7 +68,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,5 +130,27 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 AUTH_USER_MODEL = 'users.User'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+EMAIL_BACKEND = 'django.core.mail.backend.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = 'home'
+
+ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+
+
+ALLAUTH_UI_THEME = "dark"

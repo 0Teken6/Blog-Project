@@ -49,9 +49,10 @@ a.article-title:hover {
 }
 
 .article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
+  height: 45px;
+  width: 45px;
+  margin-right: 12px;
+  background-color: #FFF;
 }
 
 .article-metadata {
@@ -83,15 +84,132 @@ a.article-title:hover {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
+
+
+.article-metadata {
+  margin-bottom: 6px;
+}
+
+.separator {
+  color: #999;
+  font-weight: 300;
+}
+
+.category-badge {
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.tag-badge {
+  background-color: #88d057;
+  border: 1px solid #1aff00;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.author {
+  font-weight: 500;
+  color: #428bca;
+}
+
+
+/* NAVBAR  */
 #nav-blog {
-    font-size: 28px;
-    font-weight: bold;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 #register-nav-item:hover{
-    background-color: aliceblue;
-    color: #000;
+  background-color: aliceblue;
+  color: #000;
+}
+
+.nav-avatar {
+  height: 40px;
+  width: 40px;
+  background-color: #FFF;
+  object-fit: cover;
+}
+
+.user-dropdown {
+  border-radius: 10px;
+  padding: 10px 0;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown.show .user-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.dropdown-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dropdown-item {
+  padding: 8px 18px;
+  transition: background 0.15s ease, padding-left 0.15s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+  padding-left: 22px;
+} 
+
+/* SIDEBAR */
+.content-section .sidebar label {
+  display: block;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.content-section .sidebar input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.content-section .sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.content-section .sidebar li {
+  margin-bottom: 6px;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+}
+
+.form-check {
+  margin-bottom: 4px;
+}
+
+.filter-count {
+  color: #888;
+  font-size: 0.85rem;
+  margin-left: 3px;
 }
