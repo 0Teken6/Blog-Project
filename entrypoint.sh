@@ -4,7 +4,6 @@ echo "Running migrations..."
 python manage.py migrate
 
 python manage.py collectstatic --noinput
-python manage.py populate_db  
 
 echo "Starting server..."
 exec gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
