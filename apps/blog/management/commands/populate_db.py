@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # get or create superuser
-        user = get_user_model().objects.filter(username='Teken').first()
+        user = get_user_model().objects.filter(username='admin').first()
         if not user:
             user = get_user_model().objects.create_superuser(username='admin', password='test')
         
