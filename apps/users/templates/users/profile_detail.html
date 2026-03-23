@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <div class="content-section">
+        <div class="media d-flex align-items-center">
+            <img class="rounded-circle account-img" src="{{ profile.profile_pic.url }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ profile.user.username }}</h2>
+                <p class="text-secondary">{{ profile.user.email }}</p>
+            </div>
+        </div>
+        <h4>{{ profile.description }}</h4>
+        <a href="{% url 'user-posts' profile.user.username %}">Posts of {{ profile.user.username }}</a>
+        {% if user.username == profile.user.username %}
+            <a href="{% url 'profile' %}" class="d-flex"><button class="btn btn-outline-info" type="submit">Change</button></a>
+        {% endif %}
+    </div>
+{% endblock %}

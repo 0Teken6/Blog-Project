@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.blog.apps.BlogConfig',
     'apps.users.apps.UsersConfig',
-    'bootstrap5',
     'crispy_forms',
     "crispy_bootstrap5",
     'django_filters',
@@ -88,8 +87,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config("POSTGRES_DB"),
+        'USER': config("POSTGRES_USER"),
+        'PASSWORD': config("POSTGRES_PASSWORD"),
+        'HOST': config("DB_HOST"),
+        'PORT': config("DB_PORT"),
     }
 }
 
@@ -149,8 +152,8 @@ ACCOUNT_EMAIL_VERIFICATION = 'optional'
 EMAIL_BACKEND = 'django.core.mail.backend.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'account_login'
 
 ACCOUNT_LOGIN_METHODS = {'email', 'username'}
-
 
 ALLAUTH_UI_THEME = "dark"

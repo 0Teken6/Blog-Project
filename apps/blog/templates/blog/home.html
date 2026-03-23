@@ -1,25 +1,47 @@
+
 {% extends "blog/base.html" %}
+
 {% block content %}
-    <div class="row">
-        <div class="col-md-9">
-            {% for post in posts %}
-                <article class="media content-section">
-                    <div class="media-body">
-                        <div class="article-metadata d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-2">
-                                <img class="rounded-circle article-img" src="{{ post.author.profile.profile_pic.url }}">
-                                <a class="author" href="#">{{ post.author }}</a>
-                                <span class="separator">|</span>
-                                <span class="category-badge">{{ post.category.name }}</span>
-                            </div>
-                            <small class="text-muted">{{ post.created_at|date:"F d, Y" }}</small>
-                        </div>
-                        <h2><a class="article-title" href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h2>
-                        <p class="article-content">{{ post.content | truncatechars:255 }}</p>
-                    </div>
-                </article>
-            {% endfor %}
-        </div>
-        {% include 'blog/custom/filtering.html' %}
+<div class="container">
+
+    <!-- HERO SECTION -->
+    <div class="p-5 mb-4 bg-light rounded-3 text-center">
+        <h1 class="display-5 fw-bold">Welcome to My Blog</h1>
+        <p class="lead">Discover articles about programming, tech, and more.</p>
+        <a href="{% url 'posts' %}" class="btn btn-primary btn-lg">Explore Posts</a>
     </div>
-{% endblock content %}
+
+    <!-- FEATURED POSTS -->
+    <h3 class="mb-4">🔥 Latest Posts</h3>
+
+    <div class="row">
+        {% for post in posts|slice:":6" %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ post.author.profile.profile_pic.url }}" class="card-img-top" style="height:45px; width: 45px; object-fit:cover; margin: 2px 0 0 2px;">
+                
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a>
+                    </h5>
+                    <p class="card-text">
+                        {{ post.content|truncatechars:100 }}
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ post.created_at|date:"M d, Y" }}</small>
+                        <small>{{ post.category.name }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- CALL TO ACTION -->
+    <div class="text-center mt-5">
+        <h4>Want to share your thoughts?</h4>
+        <a href="{% url 'post-create' %}" class="btn btn-success">Create Post</a>
+    </div>
+
+</div>
+{% endblock %}

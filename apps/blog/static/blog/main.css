@@ -102,6 +102,7 @@ a {
   background-color: #f3f3f3;
   border: 1px solid #ddd;
   padding: 2px 8px;
+  margin-top: 4px;
   border-radius: 6px;
   font-size: 0.8rem;
   color: #555;
@@ -111,16 +112,21 @@ a {
   background-color: #88d057;
   border: 1px solid #1aff00;
   padding: 2px 8px;
+  margin-top: 4px;
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 600;
   color: #ffffff;
+}
+.author-span {
+  font-weight: 500;
 }
 
 .author {
   font-weight: 500;
   color: #428bca;
 }
+
 
 
 /* NAVBAR  */
@@ -173,6 +179,9 @@ a {
 .dropdown-item {
   padding: 8px 18px;
   transition: background 0.15s ease, padding-left 0.15s ease;
+}
+.dropdown-item:active {
+  color: #444444;
 }
 
 .dropdown-item:hover {

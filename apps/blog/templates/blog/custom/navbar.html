@@ -33,7 +33,7 @@
               <div class="mt-2 fw-semibold">{{ user.username }}</div>
             </li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'profile-detail' user.username %}">Profile</a></li>
             <li><a class="dropdown-item" href="{% url 'user-posts' user.username %}">My Posts</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item text-danger" href="#">Log Out</a></li>

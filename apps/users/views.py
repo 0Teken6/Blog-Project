@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
 from .forms import UserUpdateForm, ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views.generic import DetailView
+from django.contrib.auth import get_user_model
 
 
 @login_required
@@ -27,3 +29,11 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
+class UserProfileDetailView(DetailView):
+    model = Profile
+    template_name = 'users/profile_detail.html'
+    
+
+    def get_object(self):
+        profile = get_object_or_404(Profile, user__username=self.kwargs.get('username'))
+        return profile
