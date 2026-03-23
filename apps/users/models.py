@@ -10,7 +10,7 @@ class User(AbstractUser):
 
 class Profile(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, null=True)
     profile_pic = models.ImageField(default='default.png', upload_to='profile_pics')
     
     def __str__(self):
