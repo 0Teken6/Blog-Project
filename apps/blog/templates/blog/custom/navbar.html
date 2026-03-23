@@ -35,6 +35,7 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{% url 'profile-detail' user.username %}">Profile</a></li>
             <li><a class="dropdown-item" href="{% url 'user-posts' user.username %}">My Posts</a></li>
+            <li><a class="dropdown-item" href="{% url 'post-create' %}">Create Post</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item text-danger" href="#">Log Out</a></li>
           </ul>
