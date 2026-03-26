@@ -11,8 +11,11 @@
             {% block head_title %}
             {% endblock head_title %}
         </title>
+        <link rel="stylesheet" href="{% static 'blog/static/navbar.css' %}">
         {% block extra_head %}
+            
             <link rel="stylesheet" href="{% static 'allauth_ui/output.css' %}">
+            
         {% endblock extra_head %}
     </head>
     <body class="bg-base-300 min-h-screen flex flex-col">
@@ -23,7 +26,7 @@
                 </a>
             </div>
             <div class="flex items-center gap-4 mr-2">
-                <a href="{% url 'home' %}" class="btn btn-ghost btn-sm">
+                <a href="{% url 'home' %}" class="btn btn-ghost btn-sm" id="a_home">
                     Home
                 </a>
                 <a href="{% url 'about' %}" class="btn btn-ghost btn-sm">
@@ -33,19 +36,9 @@
                     Posts
                 </a>
                 {% if user.is_authenticated %}
-                <div class="dropdown dropdown-end">
-                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-9 rounded-full">
-                            <img src="{{ user.profile.profile_pic.url }}">
-                        </div>
-                    </label>
-                    <ul class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li class="font-semibold px-3 py-1">{{ user.username }}</li>
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li><a href="{% url 'user-posts' user.username %}">My Posts</a></li>
-                        <li><a href="{% url 'account_logout' %}" class="text-error">Log Out</a></li>
-                    </ul>
-                </div>
+                <a href="{% url 'profile-detail' user.username %}" class="btn btn-primary btn-sm">
+                    Profile
+                </a>
                 {% else %}
                 <a href="{% url 'account_login' %}" class="btn btn-ghost btn-sm">
                     Login
@@ -56,8 +49,7 @@
                 {% endif %}
             </div>
         </div>
-
-        {% block body %}       
+        {% block body %}
             {% if messages %}
                 {% for message in messages %}
                     <div role="alert"
@@ -89,6 +81,15 @@
                     {% url 'account_logout' as logout_url %}
                     {% if logout_url %}
                         <a href="{{ logout_url }}">{% trans "Sign Out" %}</a>
+                    {% endif %}
+                {% else %}
+                    {% url 'account_login' as login_url %}
+                    {% if login_url %}
+                        <a href="{{ login_url }}">{% trans "Sign In" %}</a>
+                    {% endif %}
+                    {% url 'account_signup' as signup_url %}
+                    {% if signup_url %}
+                        <a href="{{ signup_url }}">{% trans "Sign Up" %}</a>
                     {% endif %}
                 {% endif %}
             </div>

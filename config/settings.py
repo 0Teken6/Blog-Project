@@ -146,6 +146,8 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'users.User'
 
+SITE_ID = 1
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"

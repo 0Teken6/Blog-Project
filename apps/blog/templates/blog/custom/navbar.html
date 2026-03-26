@@ -20,7 +20,7 @@
               <a class="nav-link" href="{% url 'account_login' %}">Login</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link border border-light rounded px-2" id="register-nav-item" href="#">Sign Up</a>
+              <a class="nav-link border border-light rounded px-2" id="register-nav-item" href="{% url 'account_signup' %}">Sign Up</a>
           </li>
         {% else %}
         <li class="nav-item dropdown">
@@ -37,7 +37,7 @@
             <li><a class="dropdown-item" href="{% url 'user-posts' user.username %}">My Posts</a></li>
             <li><a class="dropdown-item" href="{% url 'post-create' %}">Create Post</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="#">Log Out</a></li>
+            <li><a class="dropdown-item text-danger" href="{% url 'account_logout' %}">Log Out</a></li>
           </ul>
         </li>
         {% endif %}
