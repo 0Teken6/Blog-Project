@@ -3,9 +3,10 @@ from django.views import generic
 from apps.blog.models import Post, Category, Tag
 from django.contrib.auth import get_user_model
 from .filters import PostFilter
-from django_filters.views import FilterView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Count
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 
 def home(request):
@@ -19,13 +20,13 @@ def about(request):
     return render(request, 'blog/about.html')
 
 
+@method_decorator(cache_page(60 * 5, key_prefix="post_list"), name='dispatch')
 class PostListView(generic.ListView):
     model = Post
     context_object_name = 'posts'
     template_name = "blog/posts.html"
     ordering = ['-created_at']
     paginate_by = 5
-
 
     def get_queryset(self):
         queryset = super().get_queryset()
